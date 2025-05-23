@@ -1,6 +1,6 @@
 from transformers import pipeline
 import spacy
-
+import whisper
 
 sentiment_pipeline = pipeline("sentiment-analysis","distilbert/distilbert-base-uncased-finetuned-sst-2-english")
 filler = {'um', 'uh', 'like', 'you know'}
@@ -30,3 +30,8 @@ def compute_filler_ratio(text):
         return filler_count / len(words)
     else:
         return 0
+    
+def transcribe_audio(file):
+    model = whisper.load_model("base")
+    result = model.transcribe(file)
+    return result['text']
