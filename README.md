@@ -12,7 +12,7 @@ For linux based:
 
 `python -m spacy download en_core_web_sm`
 
-# Run hte app
+# Run the app
 
 `streamlit run app.py`
 
