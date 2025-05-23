@@ -10,7 +10,6 @@ def compute_sentiment(text):
     result = sentiment_pipeline(text)[0]
     return result['label'], result['score']
 
-
 def get_filler_count(doc):
     count = 0
     for token in doc:
