@@ -14,7 +14,7 @@ def compute_sentiment(text):
 def get_filler_count(doc):
     count = 0
     for token in doc:
-        if token in filler:
+        if token.text.lower() in filler:
             count += 1
     return count
 
