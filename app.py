@@ -1,4 +1,9 @@
+from transformers import pipeline
+
+sentiment_pipeline = pipeline("sentiment-analysis")
+
 lines = []
+
 
 with open("transcript.txt", "r") as f:
     for line in f:
@@ -7,9 +12,15 @@ with open("transcript.txt", "r") as f:
             lines.append(cleaned)
 
 
-
+def compute_sentiment(text):
+    result = sentiment_pipeline(text)[0]
+    return result['label'], result['score']
 
 for line in lines:
     
     speaker, text = line.split(":", 1)
-    print(speaker,text)
+    sentiment, score = compute_sentiment(text)
+    print(f"Speaker: {speaker.strip()}")
+    print(f"Text: {text.strip()}")
+    print(f"Sentiment: {sentiment}")
+    print(f"Score: {score}")
