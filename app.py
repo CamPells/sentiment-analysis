@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-sentiment_pipeline = pipeline("sentiment-analysis")
+sentiment_pipeline = pipeline(model="distilbert/distilbert-base-uncased-finetuned-sst-2-english")
 
 lines = []
 
